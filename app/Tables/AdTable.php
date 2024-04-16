@@ -65,7 +65,9 @@ class AdTable extends AbstractTable
                 return $created_at->format('d.m.Y. H:i');
             })
             ->column('price', 'Cijena', as: function ($price) {
-                return number_format($price, 2, ',', '.');
+                if (is_numeric($price))
+                    return number_format($price, 2, ',', '.');
+                return $price;
             })
             ->column('phone_number', 'Telefon')
             ->column('city', 'Grad')

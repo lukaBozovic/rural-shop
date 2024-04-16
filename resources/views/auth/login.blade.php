@@ -10,7 +10,7 @@
             <x-splade-checkbox id="remember_me" name="remember" label="Zapamti me" />
 
             <div class="flex items-center justify-end">
-                <Link class="underline mr-16 text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                <Link class="underline mr-16 text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
                     Registruj se
                 </Link>
                 @if (Route::has('password.request'))

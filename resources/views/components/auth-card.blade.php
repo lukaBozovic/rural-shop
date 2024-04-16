@@ -5,7 +5,7 @@
             {{ $logo }}
         @else
             <Link href="/">
-                <img src="{{ asset('logo.png') }}" alt="logo" class="ml-7 w-4/5 h-4/5">
+                <img src="{{ asset('logo.png') }}" alt="logo" class="ml-24 w-3/5 h-3/5">
             </Link>
         @endisset
     </div>
