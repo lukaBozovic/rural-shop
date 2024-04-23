@@ -71,6 +71,7 @@ class AdTable extends AbstractTable
             })
             ->column('phone_number', 'Telefon')
             ->column('city', 'Grad')
+            ->column('address', 'Adresa')
             ->column('is_active', 'Aktivno')
             ->column('action', 'Akcije',alignment: 'center')
             ->selectFilter('is_active', [

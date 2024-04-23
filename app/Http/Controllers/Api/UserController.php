@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Ad;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class AdController extends Controller
+class UserController extends Controller
 {
-    public function show(Ad $ad): Ad
+    public function show(User $user): User
     {
-        return $ad;
+        return $user;
     }
 }
