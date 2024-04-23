@@ -25,6 +25,9 @@
                             <x-nav-link :href="route('ads.index')" :active="request()->routeIs('ads.index')">
                                 Oglasi
                             </x-nav-link>
+                            <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
+                                Narudžbine
+                            </x-nav-link>
                         @endif
 
                     </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,8 @@ Route::middleware('splade')->group(function () {
         Route::resource('ads', AdController::class);
         Route::patch('/ads/{ad}/active-toggle', [AdController::class, 'changeIsActive'])->name('ads.active-toggle');
 
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+        Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
     });
 
 
