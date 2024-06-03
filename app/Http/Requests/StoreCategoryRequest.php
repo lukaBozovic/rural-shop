@@ -23,6 +23,7 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:3|max:255',
+            'cover_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
     }
 
@@ -34,6 +35,10 @@ class StoreCategoryRequest extends FormRequest
             'name.string' => 'Polje naziv mora biti tekst',
             'name.min' => 'Polje naziv mora sadržavati najmanje 3 karaktera',
             'name.max' => 'Polje naziv mora sadržavati najviše 255 karaktera',
+            'cover_image.required' => 'Slika je obavezna',
+            'cover_image.image' => 'Slika mora biti slika',
+            'cover_image.mimes' => 'Slika mora biti jednog od formata: jpeg, png, jpg, gif, svg',
+            'cover_image.max' => 'Slika može imati najviše 2048kb',
         ];
     }
 }

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('cover_image_id')->nullable()->constrained('images')->cascadeOnDelete();
             $table->timestamps();
         });
     }

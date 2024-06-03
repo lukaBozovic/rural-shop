@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AdController;
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,5 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/users/{user}', [UserController::class, 'show']);
-Route::get('/ads/{ad}', [AdController::class, 'show']);
-
+Route::apiResource('/ads', AdController::class);
+Route::apiResource('/categories', CategoryController::class);

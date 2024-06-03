@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\ImageHelper;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
 use App\Tables\CategoryTable;
@@ -22,7 +23,8 @@ class CategoryController extends Controller
 
     public function store(StoreCategoryRequest $request) : RedirectResponse
     {
-        Category::query()->create($request->validated());
+        $category = Category::query()->create($request->except('cover_image'));
+        ImageHelper::addCoverPhoto($category, $request);
 
         Toast::message("Uspješno kreirana kategorija!")->autoDismiss(5);
 
@@ -32,7 +34,8 @@ class CategoryController extends Controller
     public function update(Category $category, StoreCategoryRequest $request)
     {
 
-        $category->update($request->validated());
+        $category->update($request->except('cover_image'));
+        ImageHelper::addCoverPhoto($category, $request);
 
         Toast::message("Uspješno izmijenjena kategorija!")->autoDismiss(5);
 
