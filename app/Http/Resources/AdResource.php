@@ -15,7 +15,7 @@ class AdResource extends JsonResource
     public function toArray(Request $request): array
     {
         $parent = parent::toArray($request);
-        $parent['cover_image'] = asset($this->coverImage->path);
+        $parent['cover_image'] = asset($this->coverImage()->first()->path);
         return $parent;
     }
 }

@@ -10,9 +10,9 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class AdController extends Controller
 {
-    public function show(Ad $ad): Ad
+    public function show(Ad $ad): AdResource
     {
-        return $ad;
+        return AdResource::make($ad);
     }
 
     public function index(Request $request): AnonymousResourceCollection
@@ -26,7 +26,9 @@ class AdController extends Controller
                 $q->where('title', 'like', '%' . $search . '%')
                     ->orWhere('description', 'like', '%' . $search . '%');
             })->when($categoryId, function ($q) use ($categoryId) {
-                $q->where('category_id', $categoryId);
+                $q->whereHas('categories', function ($q) use ($categoryId) {
+                    $q->where('category_id', $categoryId);
+                });
             });
 
         if ($perPage) {

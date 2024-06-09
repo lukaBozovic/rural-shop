@@ -24,7 +24,7 @@ class AdSeeder extends Seeder
             for($i = 0; $i < 10; $i++) {
                 $ad = Ad::query()->create([
                     'user_id' => $user->id,
-                    'title' => $faker->title,
+                    'title' => $faker->word,
                     'description' => $faker->text(128),
                     'price' => $faker->randomFloat(2, 0, 1000),
                     'phone_number' => $faker->phoneNumber,

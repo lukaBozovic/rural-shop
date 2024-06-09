@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('city');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->boolean('is_active')->default(true);
-            $table->foreignId('cover_image_id')->nullable()->constrained('images')->cascadeOnDelete();
+            $table->foreignId('cover_image_id')->nullable()->constrained('images')->nullOnDelete();
             $table->timestamps();
         });
     }

@@ -82,10 +82,12 @@ class AdController extends Controller
         $ad->categories()->sync($request->categories);
 
         if ($request->cover_image) {
-            // delete old cover
-            Storage::delete(Str::after($ad->coverPhoto->path, 'storage/'));
-            $ad->coverPhoto()->delete();
-            // create new cover
+            if ($ad->coverImage()->first()){
+                // delete old cover
+                Storage::delete(Str::after($ad->coverImage()->first()->path, 'storage/'));
+                $ad->coverImage->delete();
+                // create new cover
+            }
             $this->addCoverPhoto($ad, $request);
         }
 
