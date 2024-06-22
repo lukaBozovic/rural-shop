@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Ad;
 use App\Models\Image;
+use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -27,6 +28,7 @@ class AdSeeder extends Seeder
                     'title' => $faker->word,
                     'description' => $faker->text(128),
                     'price' => $faker->randomFloat(2, 0, 1000),
+                    'unit_id'=> rand(1, Unit::query()->count()),
                     'phone_number' => $faker->phoneNumber,
                     'city' => $faker->city,
                     'cover_image_id' => $img->id,

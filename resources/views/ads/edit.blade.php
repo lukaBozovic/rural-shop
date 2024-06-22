@@ -15,6 +15,8 @@
             <x-splade-input name="city" label="Grad" placeholder="Unesite grad" required/>
             <x-splade-input name="address" label="Adresa" placeholder="Adresu" required/>
             <x-splade-input name="price" label="Cijena" placeholder="Unesite cijenu" required/>
+            <x-splade-select name="unit_id" label="Jedinica mjere" :options="$units"
+                             placeholder="Odaberite jedinicu mjere" choices relation/>
             <x-splade-select name="categories[]" label="Kategorije" :options="$categories"
                              placeholder="Odaberite kategorije" choices multiple relation/>
 

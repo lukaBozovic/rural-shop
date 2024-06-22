@@ -17,7 +17,9 @@ class AdResource extends JsonResource
         $parent = parent::toArray($request);
         $parent['user_name'] = $this->user->name;
         $parent['cover_image'] = asset($this->coverImage()->first()->path);
+        $parent['unit'] = $this->unit->symbol;
         $parent['additional_images'] = [];
+
         foreach ($this->images as $image) {
             $parent['additional_images'][] = asset($image->path);
         }

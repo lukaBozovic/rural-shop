@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateAdRequest;
 use App\Models\Ad;
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\Unit;
 use App\Tables\AdTable;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -29,7 +30,8 @@ class AdController extends Controller
     {
         return view('ads.create',
             [
-                'categories' => Category::query()->pluck('name', 'id')->toArray()
+                'categories' => Category::query()->pluck('name', 'id')->toArray(),
+                'units' => Unit::query()->pluck('name','id')->toArray()
             ]
         );
     }
@@ -135,7 +137,8 @@ class AdController extends Controller
         $ad->images = $this->getImagesExistingFiles($ad);
         return view('ads.edit', [
             'ad' => $ad,
-            'categories' => Category::query()->pluck('name', 'id')->toArray()
+            'categories' => Category::query()->pluck('name', 'id')->toArray(),
+            'units' => Unit::query()->pluck('name','id')->toArray()
         ]);
     }
 

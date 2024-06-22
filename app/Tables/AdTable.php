@@ -2,11 +2,8 @@
 
 namespace App\Tables;
 
-use App\Http\Services\RubricService;
 use App\Models\Ad;
 use App\Models\Category;
-use App\Models\News;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use ProtoneMedia\Splade\AbstractTable;
@@ -41,13 +38,13 @@ class AdTable extends AbstractTable
      */
     public function for()
     {
-        return Ad::query()->where('user_id', auth()->user()->id)->with(['categories']);
+        return Ad::query()->where('user_id', auth()->user()->id)->with(['categories', 'unit']);
     }
 
     /**
      * Configure the given SpladeTable.
      *
-     * @param \ProtoneMedia\Splade\SpladeTable $table
+     * @param SpladeTable $table
      * @return void
      */
     public function configure(SpladeTable $table): void
@@ -69,6 +66,7 @@ class AdTable extends AbstractTable
                     return number_format($price, 2, ',', '.');
                 return $price;
             })
+            ->column('unit.name', 'JM')
             ->column('phone_number', 'Telefon')
             ->column('city', 'Grad')
             ->column('address', 'Adresa')
@@ -82,16 +80,9 @@ class AdTable extends AbstractTable
             ->defaultSort('id', 'desc')
             ->paginate()
         ;
-
-            // ->searchInput()
-            // ->selectFilter()
-            // ->withGlobalSearch()
-
-            // ->bulkAction()
-            // ->export()
     }
 
-    protected function getCategories()
+    protected function getCategories(): array
     {
         return Category::query()->get()->pluck('name', 'id')->toArray();
     }

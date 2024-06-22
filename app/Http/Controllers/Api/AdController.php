@@ -21,7 +21,8 @@ class AdController extends Controller
         $perPage = $request->input('per_page');
         $categoryId = $request->input('category_id');
 
-        $query = Ad::query()->with(['coverImage', 'categories'])
+        $query = Ad::query()->where('is_active', 1)
+            ->with(['coverImage', 'categories', 'unit'])
             ->when($search, function ($q) use ($search) {
                 $q->where('title', 'like', '%' . $search . '%')
                     ->orWhere('description', 'like', '%' . $search . '%');

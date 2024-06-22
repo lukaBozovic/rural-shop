@@ -31,4 +31,9 @@ class Ad extends Model
     {
         return $this->belongsTo(Image::class, 'cover_image_id');
     }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
 }

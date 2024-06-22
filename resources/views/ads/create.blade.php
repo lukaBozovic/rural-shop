@@ -8,15 +8,16 @@
     </x-slot>
     <div class="px-32 py-4 mx-20">
         <x-splade-form :action="route('ads.store')" class="mx-auto p-4 bg-white rounded-md" preserve-scroll>
-                    <x-splade-input name="title" label="Naslov" placeholder="Unesite naslov" required/>
-                    <x-splade-textarea name="description" label="Opis" placeholder="Unesite opis" autosize required />
-                    <x-splade-input name="phone_number" label="Broj telefona" placeholder="Unesite broj telefona" required/>
-                    <x-splade-input name="city" label="Grad" placeholder="Unesite grad" required/>
-                    <x-splade-input name="address" label="Adresa" placeholder="Adresu" required/>
-                    <x-splade-input name="price" label="Cijena" placeholder="Unesite cijenu" required/>
-                    <x-splade-select name="categories[]" label="Kategorije" :options="$categories"
-                                     placeholder="Odaberite kategorije" choices multiple/>
-
+            <x-splade-input name="title" label="Naslov" placeholder="Unesite naslov" required/>
+            <x-splade-textarea name="description" label="Opis" placeholder="Unesite opis" autosize required/>
+            <x-splade-input name="phone_number" label="Broj telefona" placeholder="Unesite broj telefona" required/>
+            <x-splade-input name="city" label="Grad" placeholder="Unesite grad" required/>
+            <x-splade-input name="address" label="Adresa" placeholder="Adresu" required/>
+            <x-splade-input name="price" label="Cijena" placeholder="Unesite cijenu" required/>
+            <x-splade-select name="unit_id" label="Jedinica mjere" :options="$units"
+                             placeholder="Odaberite jedinicu mjere" choices />
+            <x-splade-select name="categories[]" label="Kategorije" :options="$categories"
+                             placeholder="Odaberite kategorije" choices multiple/>
 
 
             <x-splade-file name="cover_image" placeholder="Odaberite sliku" label="Naslovna slika"
