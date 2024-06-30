@@ -10,7 +10,7 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class AdController extends Controller
 {
-    public function show(Ad $ad): AdResource
+    public function show(Ad $ad)
     {
         return AdResource::make($ad);
     }

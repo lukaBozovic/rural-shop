@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Ad;
 use App\Tables\OrderTable;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
@@ -21,5 +20,12 @@ class OrderController extends Controller
         )->json();
         $ad = Ad::query()->find($order['ad_id']);
         return view('orders.show', ['order' => $order, 'ad' => $ad]);
+    }
+
+    public function changeActivity($orderId): void
+    {
+        Http::post(
+            config('app.rural_shop_ordering_url') . '/api/orders/' . $orderId . '/approve'
+        )->json();
     }
 }
