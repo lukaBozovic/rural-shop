@@ -28,4 +28,11 @@ class OrderController extends Controller
             config('app.rural_shop_ordering_url') . '/api/orders/' . $orderId . '/approve'
         )->json();
     }
+
+    public function deleteOrder($orderId): void
+    {
+        Http::delete(
+            config('app.rural_shop_ordering_url') . '/api/orders/' . $orderId
+        )->json();
+    }
 }

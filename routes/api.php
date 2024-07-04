@@ -26,3 +26,4 @@ Route::get('/users/{user}', [UserController::class, 'show']);
 Route::apiResource('/ads', AdController::class);
 Route::apiResource('/categories', CategoryController::class);
 Route::post('/change-activity/order/{orderId}', [OrderController::class, 'changeActivity']);
+Route::post('/delete-order/{orderId}', [OrderController::class, 'deleteOrder']);

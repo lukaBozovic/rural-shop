@@ -59,25 +59,17 @@ class OrderTable extends AbstractTable
     {
         $table
             ->withGlobalSearch(columns: ['id', 'title'])
-            ->column('id')
-            ->column('ad_id', 'ID oglasa')
-            ->column('name', 'Ime')
-            ->column('price', 'Cijena')
-            ->column('email', 'Email')
-            ->column('phone', 'Telefon')
-            ->column('is_approved', 'Odobreno', as: function ($is_approved) {
-                return $is_approved ? 'Da' : 'Ne';
-            })
+            ->column('id', alignment: 'center')
+            ->column('ad_id', 'ID oglasa',alignment: 'center')
+            ->column('name', 'Ime',alignment: 'center')
+            ->column('quantity', 'Količina',alignment: 'center')
+            ->column('price', 'Cijena',alignment: 'center')
+            ->column('email', 'Email',alignment: 'center')
+            ->column('phone', 'Telefon',alignment: 'center')
+            ->column('created_at', 'Datum kreiranja',alignment: 'center')
             ->column('action', 'Akcije',alignment: 'center')
             ->defaultSort('id', 'desc')
         ;
-
-            // ->searchInput()
-            // ->selectFilter()
-            // ->withGlobalSearch()
-
-            // ->bulkAction()
-            // ->export()
     }
 
 }
